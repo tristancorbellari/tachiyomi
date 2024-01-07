@@ -539,6 +539,8 @@
     <string name="used_cache">Used: %1$s</string>
     <string name="cache_deleted">Cache cleared, %1$d files deleted</string>
     <string name="cache_delete_error">Error occurred while clearing</string>
+    <string name="pref_chapter_cache_size">Chapter cache size</string>
+    <string name="chapter_cache_size">%1$s MB</string>
     <string name="pref_auto_clear_chapter_cache">Clear chapter cache on app launch</string>
 
     <!-- Sync section -->

@@ -83,6 +83,7 @@ internal fun PreferenceItem(
                     label = item.title,
                     min = item.min,
                     max = item.max,
+                    steps = item.steps,
                     value = item.value,
                     valueText = item.subtitle.takeUnless { it.isNullOrEmpty() } ?: item.value.toString(),
                     onChange = {

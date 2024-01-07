@@ -252,9 +252,12 @@ object SettingsDataScreen : SearchableSettings {
         val scope = rememberCoroutineScope()
         val libraryPreferences = remember { Injekt.get<LibraryPreferences>() }
 
+        val chapterCacheSizePref = libraryPreferences.chapterCacheSize()
+
         val chapterCache = remember { Injekt.get<ChapterCache>() }
         var cacheReadableSizeSema by remember { mutableIntStateOf(0) }
         val cacheReadableSize = remember(cacheReadableSizeSema) { chapterCache.readableSize }
+        val chapterCacheSize by chapterCacheSizePref.collectAsState()
 
         return Preference.PreferenceGroup(
             title = stringResource(MR.strings.pref_storage_usage),
@@ -287,6 +290,18 @@ object SettingsDataScreen : SearchableSettings {
                                 withUIContext { context.toast(MR.strings.cache_delete_error) }
                             }
                         }
+                    },
+                ),
+                Preference.PreferenceItem.SliderPreference(
+                    value = chapterCacheSize,
+                    title = stringResource(MR.strings.pref_chapter_cache_size),
+                    subtitle = stringResource(MR.strings.chapter_cache_size, chapterCacheSize),
+                    min = LibraryPreferences.CHAPTER_CACHE_SIZE_MIN,
+                    max = LibraryPreferences.CHAPTER_CACHE_SIZE_MAX,
+                    steps = 7,
+                    onValueChanged = {
+                        chapterCacheSizePref.set(it)
+                        true
                     },
                 ),
                 Preference.PreferenceItem.SwitchPreference(

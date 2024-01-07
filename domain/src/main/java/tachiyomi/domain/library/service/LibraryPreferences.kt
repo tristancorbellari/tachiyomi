@@ -190,6 +190,8 @@ class LibraryPreferences(
         )
     }
 
+    fun chapterCacheSize() = preferenceStore.getInt("chapter_cache_size", 100)
+
     fun autoClearChapterCache() = preferenceStore.getBoolean("auto_clear_chapter_cache", false)
 
     // endregion
@@ -224,5 +226,8 @@ class LibraryPreferences(
         const val MANGA_HAS_UNREAD = "manga_fully_read"
         const val MANGA_NON_READ = "manga_started"
         const val MANGA_OUTSIDE_RELEASE_PERIOD = "manga_outside_release_period"
+
+        const val CHAPTER_CACHE_SIZE_MIN = 100
+        const val CHAPTER_CACHE_SIZE_MAX = 500
     }
 }

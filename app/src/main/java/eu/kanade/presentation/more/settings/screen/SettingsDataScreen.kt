@@ -304,6 +304,7 @@ object SettingsDataScreen : SearchableSettings {
                         true
                     },
                 ),
+                Preference.PreferenceItem.InfoPreference(stringResource(MR.strings.chapter_cache_size_info)),
                 Preference.PreferenceItem.SwitchPreference(
                     pref = libraryPreferences.autoClearChapterCache(),
                     title = stringResource(MR.strings.pref_auto_clear_chapter_cache),

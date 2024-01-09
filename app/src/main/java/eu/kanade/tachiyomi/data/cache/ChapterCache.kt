@@ -31,9 +31,8 @@ import java.io.IOException
 class ChapterCache(
     private val context: Context,
     private val json: Json,
+    var libraryPreferences: LibraryPreferences,
 ) {
-
-    val libraryPreferences = Injekt.get<LibraryPreferences>()
 
     /** Cache class used for cache management. */
     private val diskCache = DiskLruCache.open(

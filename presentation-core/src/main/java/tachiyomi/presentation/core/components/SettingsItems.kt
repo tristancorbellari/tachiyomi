@@ -161,7 +161,7 @@ fun SliderItem(
     onChange: (Int) -> Unit,
     max: Int,
     min: Int = 0,
-    steps: Int = 0,
+    steps: Int? = null,
 ) {
     val haptic = LocalHapticFeedback.current
 
@@ -194,7 +194,7 @@ fun SliderItem(
             },
             modifier = Modifier.weight(1.5f),
             valueRange = min.toFloat()..max.toFloat(),
-            steps = if (steps > 0) steps else max - min,
+            steps = steps ?: (max - min),
         )
     }
 }
